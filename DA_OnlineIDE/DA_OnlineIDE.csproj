@@ -149,6 +149,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\js\editor.js" />
+    <Content Include="Scripts\js\editor_csharp.js" />
     <Content Include="Scripts\lib\src-min\ace.js" />
     <Content Include="Scripts\lib\src-min\ext-beautify.js" />
     <Content Include="Scripts\lib\src-min\ext-code_lens.js" />
@@ -580,6 +581,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\compileCSharp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

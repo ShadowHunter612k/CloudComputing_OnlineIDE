@@ -1,13 +1,13 @@
-// Retrieve Elements
+﻿// Retrieve Elements
 const consoleLogList = document.querySelector('.editor__console-logs');
 const executeCodeBtn = document.querySelector('.editor__run');
 const resetCodeBtn = document.querySelector('.editor__reset');
 const Lang = $(document).find(':selected').attr('data-id');
 
-    // Setup Ace
-    let codeEditor = ace.edit("editorCode");
-    let defaultCode = "class Main{\n\tpublic static void main(String[] args){\n\t\t//Java code here\n\t}\n}";
-    let consoleMessages = [];
+// Setup Ace
+let codeEditor = ace.edit("editorCode");
+let defaultCode = "using System;\nnamespace Hello\n{\n\tclass Program\n\t{\n\t\tstatic void Main(string[] args)\n\t\t{\n\t\t\t//C# code here\n\t\t}\n\t}\n}";
+let consoleMessages = [];
 
 let editorLib = {
     clearConsoleScreen() {
@@ -38,11 +38,8 @@ let editorLib = {
         codeEditor.setTheme("ace/theme/dreamweaver");
 
         // Set language
-        //codeEditor.session.setMode("ace/mode/java");
-        var javaMode = require("ace/mode/java").Mode;
-        codeEditor.getSession().setMode(new javaMode());
-
-
+        var cSharp = require("ace/mode/csharp").Mode;
+        codeEditor.getSession().setMode(new cSharp());
 
         // Set Options
         codeEditor.setOptions({
@@ -57,8 +54,6 @@ let editorLib = {
     }
 }
 
-
-
 // Events
 executeCodeBtn.addEventListener('click', () => {
     // Clear console messages
@@ -66,8 +61,9 @@ executeCodeBtn.addEventListener('click', () => {
 
     // Get input from the code editor
     const userCode = codeEditor.getValue();
+
     // Run the user code
-  
+
     console.log(userCode);
     $.ajax({
         type: "post",
@@ -81,7 +77,7 @@ executeCodeBtn.addEventListener('click', () => {
             document.getElementById("output").textContent = msg;
         }
     });
-    
+
 
     // Print to the console
     editorLib.printToConsole();
