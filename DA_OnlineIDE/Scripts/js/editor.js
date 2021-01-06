@@ -71,7 +71,7 @@ executeCodeBtn.addEventListener('click', () => {
     console.log(userCode);
     $.ajax({
         type: "post",
-        url: "/Home/CompileCode",
+        url: "/Java/CompileCode",
         data: {
             code: userCode,
             lang: Lang

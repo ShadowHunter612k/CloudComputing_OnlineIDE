@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "javaB1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="editor">
+    <div class="editor__wrapper">
+        <div class="editor__body">
+            <select name="language" id="language" class="language">
+                <option value="C#" data-id="C#">C#</option>
+                <option value="Java" data-id="Java" selected="selected">Java</option>
+            </select>
+            <div id="editorCode" class="editor__code"></div>
+        </div>
+        <br />
+        <div class="editor__footer">
+            <div class="editor__footer--left">
+                <button class="editor__btn editor__run">Run ></button>
+                <button class="editor__btn editor__reset">Reset ></button>
+            </div>
+            <div class="editor__footer--right">
+                <div class="editor__console">
+                    <ul id="output" class="editor__console-logs"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Required Ace libraries -->
+<script src="~/Scripts/lib/src-min/ace.js"></script>
+<script src="~/Scripts/lib/src-min/mode-java.js"></script>
+<script src="~/Scripts/lib/src-min/mode-csharp.js"></script>
+<script src="~/Scripts/lib/src-min/ext-language_tools.js"></script>
+<script src="~/Scripts/lib/src-min/ext-beautify.js"></script>
+<!-- Xét default code cho Bài tập-->
+<script src="~/Scripts/js/exercise/java/B1.js"></script>
+
+<script>
+    $('select').on('change', function () {
+        var language = this.value;
+        if (language == "C#") {
+            window.location = "/CSharp/Index";
+        }
+        else {
+            window.location = "/Java/Index";
+        }
+    });
+</script>
+
+
+

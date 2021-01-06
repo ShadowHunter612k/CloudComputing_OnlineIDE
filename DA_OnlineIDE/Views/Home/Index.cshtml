@@ -2,45 +2,29 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="editor">
-    <div class="editor__wrapper">
-        <div class="editor__body">
-            <select name="language" id="language" class="language">
-                <option value="C#" data-id="C#">C#</option>
-                <option value="Java" data-id="Java" selected="selected">Java</option>
-            </select>
-            <div id="editorCode" class="editor__code"></div>
-        </div>
-        <br />
-        <div class="editor__footer">
-            <div class="editor__footer--left">
-                <button class="editor__btn editor__run">Run ></button>
-                <button class="editor__btn editor__reset">Reset ></button>
-            </div>
-            <div class="editor__footer--right">
-                <div class="editor__console">
-                    <ul id="output" class="editor__console-logs"></ul>
-                </div>
-            </div>
-        </div>
+<style>
+    .container-body {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-30%, -30%);
+        width: 700px;
+    }
+        .container-body .language {
+            margin: 0;
+            position: relative;
+            top: 50%;
+            left: 35%;
+        }
+</style>
+
+<div class="container-body" style="margin: auto">
+    <h1>Welcome to our online compiler IDE</h1>
+    <h1>Choose language you want to compile</h1>
+    <div class="language">
+        <a class="btn btn-primary" href="/Java/Index" style="width: 70px;">Java</a>
+        <a class="btn btn-primary" href="/CSharp/Index" style="width: 70px;">C#</a>
     </div>
 </div>
-<!-- Required Ace libraries -->
-<script src="~/Scripts/lib/src-min/ace.js"></script>
-<script src="~/Scripts/lib/src-min/mode-java.js"></script>
-<script src="~/Scripts/lib/src-min/mode-csharp.js"></script>
-<script src="~/Scripts/lib/src-min/ext-language_tools.js"></script>
-<script src="~/Scripts/lib/src-min/ext-beautify.js"></script>
-<script src="~/Scripts/js/editor.js"></script>
-
-<script>
-    $('select').on('change', function () {
-        var language = this.value;
-        if (language == "C#") {
-            window.location.replace("compileCSharp");
-        }
-        else {
-            window.location.replace("Index");
-        }
-    });
-</script>
