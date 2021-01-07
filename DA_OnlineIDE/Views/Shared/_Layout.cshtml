@@ -28,12 +28,22 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fa fa-edit"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Practice Exercise</div>
+                <div class="sidebar-brand-text mx-3">Online IDE</div>
             </a>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
+            <div class="sidebar-heading">
+                IDE
+            </div>
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="fa fa-home"></i>
+                    <span>Compiler</span>
+                </a>
+            </li>
+            <hr />
             <div class="sidebar-heading">
                 Language
             </div>
@@ -46,6 +56,7 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/Java/Index">Custom</a>
                         <a class="collapse-item" href="/Java/javaB1">Bài 1</a>
                         <a class="collapse-item" href="/Java/javaB2">Bài 2</a>
                         <a class="collapse-item" href="/Java/javaB3">Bài 3</a>
@@ -62,6 +73,7 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/CSharp/Index">Custom</a>
                         <a class="collapse-item" href="/CSharp/csharpB1">Bài 1</a>
                         <a class="collapse-item" href="/CSharp/csharpB2">Bài 2</a>
                         <a class="collapse-item" href="/CSharp/csharpB3">Bài 3</a>
@@ -80,7 +92,7 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav" style="margin: auto;">
-                        <h2>Final Project Cloud Computer - Online Compiler IDE</h2>
+                        <h2></h2>
                     </ul>
 
                 </nav>
@@ -96,6 +108,59 @@
 
     </div>
     <!-- End of Page Wrapper -->
+    <div class="modal fade" id="correctModal" tabindex="-1" role="dialog" aria-labelledby="correctModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="correctModalLabel">Đúng rồi!</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="~/Assets/img/check.jpg" style="width: 70px; height: 70px;"/>
+                    Bạn có muốn làm bài tiếp theo không?
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Làm lại</button>
+                    @{ var url = "";
+                        if (Session["next"] == null || Session["language"] == null)
+                        {
+                            url = "#";
+                        }
+                        else
+                        {
+                            url = Session["language"].ToString() + "/" + Session["next"].ToString();
+                        }
+                    }
+                    <a class="btn btn-primary" href="/@url">Tiếp tục</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="incorrectModal" tabindex="-1" role="dialog" aria-labelledby="incorrectModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="incorrectModalLabel">Sai rồi bạn ei!</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="~/Assets/img/wrong.jpg" style="width: 70px; height: 70px;" />
+                    Làm lại đi bạn! Thất bại là mẹ thành công đấy bạn!
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Làm lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scroll to Top Button-->
     <!-- Bootstrap core JavaScript-->
     <script src="~/Assets/vendor/jquery/jquery.min.js"></script>

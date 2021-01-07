@@ -3,30 +3,51 @@
     ViewBag.Title = "csharpB3";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<div class="editor">
-    <div class="editor__wrapper">
-        <div class="editor__body">
-            <select name="language" id="language" class="language">
-                <option value="C#" data-id="C#" selected="selected">C#</option>
-                <option value="Java" data-id="Java">Java</option>
-            </select>
-            <div id="editorCode" class="editor__code"></div>
+<div class="col-lg-12 mb-4">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Bài 3</h6>
         </div>
-        <br />
-        <div class="editor__footer">
-            <div class="editor__footer--left">
-                <button class="editor__btn editor__run">Run ></button>
-                <button class="editor__btn editor__reset">Reset ></button>
-            </div>
-            <div class="editor__footer--right">
-                <div class="editor__console">
-                    <ul id="output" class="editor__console-logs"></ul>
+        <div class="card-body">
+            <p>
+                Tính chu vi hình chữ nhật
+            </p>
+            <p>Input: 10, 20</p>
+            <p>Output: 60</p>
+        </div>
+    </div>
+
+</div>
+<div class="card shadow mb-4">
+    
+
+    <div class="card-body" style="min-height: 1000px !important;">
+        <div class="editor">
+            <div class="editor__wrapper">
+                <div class="editor__body">
+                    <select name="language" id="language" class="language">
+                        <option value="C#" data-id="C#" selected="selected">C#</option>
+                        <option value="Java" data-id="Java">Java</option>
+                    </select>
+                    <div id="editorCode" class="editor__code"></div>
+                </div>
+                <br />
+                <div class="editor__footer">
+                    <div class="editor__footer--left">
+                        <button class="editor__btn editor__run">Run ></button>
+                        <button class="editor__btn editor__reset">Reset ></button>
+                    </div>
+                    <div class="editor__footer--right">
+                        <div class="editor__console">
+                            <ul id="output" class="editor__console-logs"></ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <!-- Required Ace libraries -->
 <script src="~/Scripts/lib/src-min/ace.js"></script>
 <script src="~/Scripts/lib/src-min/mode-csharp.js"></script>

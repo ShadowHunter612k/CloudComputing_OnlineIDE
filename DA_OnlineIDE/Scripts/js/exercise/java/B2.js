@@ -6,7 +6,7 @@ const Lang = $(document).find(':selected').attr('data-id');
 
 // Setup Ace
 let codeEditor = ace.edit("editorCode");
-let defaultCode = "class Main{\n\tpublic static void main(String[] args){\n\t\t//Java code here\n\t}\n}";
+let defaultCode = "class Main{\n\tpublic static void main(String[] args){\n\t\tint a = 10;\n\t\tint b = 20;\n\t\tSystem.out.print(a+b);\n\t}\n}";
 let consoleMessages = [];
 
 let editorLib = {
@@ -79,6 +79,19 @@ executeCodeBtn.addEventListener('click', () => {
         success: function (msg) {
             console.log(msg);
             document.getElementById("output").textContent = msg;
+            $.ajax({
+                type: "get",
+                url: "/Java/check",
+                success: function (msg) {
+                    console.log(msg);
+                    if (msg == "Correct") {
+                        $("#correctModal").modal("toggle");
+                    }
+                    else {
+                        $("#incorrectModal").modal("toggle");
+                    }
+                }
+            });
         }
     });
 

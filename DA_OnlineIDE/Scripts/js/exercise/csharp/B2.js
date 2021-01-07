@@ -6,7 +6,7 @@ const Lang = $(document).find(':selected').attr('data-id');
 
 // Setup Ace
 let codeEditor = ace.edit("editorCode");
-let defaultCode = "using System;\nnamespace Hello\n{\n\tclass Program\n\t{\n\t\tstatic void Main(string[] args)\n\t\t{\n\t\t\t//C# code here\n\t\t}\n\t}\n}";
+let defaultCode = "using System;\nnamespace Hello\n{\n\tclass Program\n\t{\n\t\tstatic void Main(string[] args)\n\t\t{\n\t\t\tint a = 10;\n\t\t\tint b = 20;\n\t\t\tConsole.Write(a+b);\n\t\t}\n\t}\n}";
 let consoleMessages = [];
 
 let editorLib = {
@@ -75,6 +75,19 @@ executeCodeBtn.addEventListener('click', () => {
         success: function (msg) {
             console.log(msg);
             document.getElementById("output").textContent = msg;
+            $.ajax({
+                type: "get",
+                url: "/CSharp/check",
+                success: function (msg) {
+                    console.log(msg);
+                    if (msg == "Correct") {
+                        $("#correctModal").modal("toggle");
+                    }
+                    else {
+                        $("#incorrectModal").modal("toggle");
+                    }
+                }
+            });
         }
     });
 

@@ -79,6 +79,19 @@ executeCodeBtn.addEventListener('click', () => {
         success: function (msg) {
             console.log(msg);
             document.getElementById("output").textContent = msg;
+            $.ajax({
+                type: "get",
+                url: "/Java/check",
+                success: function (msg) {
+                    console.log(msg);
+                    if (msg == "Correct") {
+                        $("#correctModal").modal("toggle");
+                    }
+                    else {
+                        $("#incorrectModal").modal("toggle");
+                    }
+                }
+            });
         }
     });
 

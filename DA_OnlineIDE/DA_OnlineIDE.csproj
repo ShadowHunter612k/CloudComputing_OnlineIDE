@@ -131,12 +131,14 @@
   <ItemGroup>
     <Content Include="Assets\css\sb-admin-2.css" />
     <Content Include="Assets\css\sb-admin-2.min.css" />
+    <Content Include="Assets\img\check.jpg" />
     <Content Include="Assets\img\undraw_posting_photo.svg" />
     <Content Include="Assets\img\undraw_profile.svg" />
     <Content Include="Assets\img\undraw_profile_1.svg" />
     <Content Include="Assets\img\undraw_profile_2.svg" />
     <Content Include="Assets\img\undraw_profile_3.svg" />
     <Content Include="Assets\img\undraw_rocket.svg" />
+    <Content Include="Assets\img\wrong.jpg" />
     <Content Include="Assets\js\demo\chart-area-demo.js" />
     <Content Include="Assets\js\demo\chart-bar-demo.js" />
     <Content Include="Assets\js\demo\chart-pie-demo.js" />

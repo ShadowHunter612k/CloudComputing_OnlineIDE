@@ -51,23 +51,63 @@ namespace DA_OnlineIDE.Controllers
                 sw.Close();
             }
             commandText = @"/c docker exec onlineCompile bash /data/compile.sh ";
-            return Content(ExecCmd(commandText));
+            string output = ExecCmd(commandText);
+            Session["output"] = output;
+            Session["language"] = "Java";
+            return Content(output);
         }
 
         public ActionResult javaB1()
         {
             StopContainer();
+            Session["language"] = "Java";
+            Session["exer"] = "javaB1";
+            Session["next"] = "javaB2";
             return View();
         }
         public ActionResult javaB2()
         {
             StopContainer();
+            Session["language"] = "Java";
+            Session["exer"] = "javaB2";
+            Session["next"] = "javaB3";
             return View();
         }
         public ActionResult javaB3()
         {
             StopContainer();
+            Session["language"] = "Java";
+            Session["exer"] = "javaB3";
+            Session["next"] = "javaB1";
             return View();
+        }
+        public ActionResult check()
+        {
+            if (Session["exer"] == "javaB1")
+            {
+                if (Session["output"].ToString() == "Hello World")
+                {
+                    Session["next"] = "javaB2";
+                    return Content("Correct");
+                }
+            }
+            if (Session["exer"] == "javaB2")
+            {
+                if (Convert.ToInt32(Session["output"]) == 30)
+                {
+                    Session["next"] = "javaB3";
+                    return Content("Correct");
+                }
+            }
+            if (Session["exer"] == "javaB3")
+            {
+                if (Convert.ToInt32(Session["output"]) == 60)
+                {
+                    Session["next"] = "javaB4";
+                    return Content("Correct");
+                }
+            }
+            return Content("Incorrect");
         }
     }
 }

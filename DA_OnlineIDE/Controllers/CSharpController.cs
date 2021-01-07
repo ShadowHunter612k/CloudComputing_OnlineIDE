@@ -50,22 +50,62 @@ namespace DA_OnlineIDE.Controllers
                 sw.Close();
             }
             commandText = @"/c docker exec onlineCompile bash /compile_csharp.sh ";
-            return Content(ExecCmd(commandText));
+            string output = ExecCmd(commandText);
+            Session["output"] = output;
+            Session["language"] = "CSharp";
+            return Content(output);
         }
         public ActionResult csharpB1()
         {
             StopContainer();
+            Session["language"] = "CSharp";
+            Session["exer"] = "csharpB1";
+            Session["next"] = "csharpB2";
             return View();
         }
         public ActionResult csharpB2()
         {
             StopContainer();
+            Session["language"] = "CSharp";
+            Session["exer"] = "csharpB2";
+            Session["next"] = "csharpB3";
             return View();
         }
         public ActionResult csharpB3()
         {
             StopContainer();
+            Session["language"] = "CSharp";
+            Session["exer"] = "csharpB3";
+            Session["next"] = "csharpB1";
             return View();
+        }
+        public ActionResult check()
+        {
+            if (Session["exer"] == "csharpB1")
+            {
+                if (Session["output"].ToString() == "Hello World")
+                {
+                    Session["next"] = "csharpB2";
+                    return Content("Correct");
+                }
+            }
+            if (Session["exer"] == "csharpB2")
+            {
+                if (Convert.ToInt32(Session["output"]) == 30)
+                {
+                    Session["next"] = "csharpB3";
+                    return Content("Correct");
+                }
+            }
+            if (Session["exer"] == "csharpB3")
+            {
+                if(Convert.ToInt32(Session["output"]) == 60)
+                {
+                    Session["next"] = "csharpB4";
+                    return Content("Correct");
+                }
+            }
+            return Content("Incorrect");
         }
     }
 }
